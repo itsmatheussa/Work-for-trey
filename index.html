@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trey Sheneman - Marketing Strategy</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        body { 
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1b2e 100%); 
+            overflow-x: hidden;
+        }
+        .gradient-bg { background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); }
+        .gradient-text { 
+            background: linear-gradient(135deg, #dc2626 0%, #f87171 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text; 
+        }
+        .phone-mockup { 
+            position: relative; 
+            width: 280px; 
+            height: 580px; 
+            background: linear-gradient(145deg, #2d2d2d, #1a1a1a); 
+            border-radius: 40px; 
+            padding: 8px; 
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.1), 0 10px 40px rgba(0,0,0,0.6), 0 20px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1); 
+            transform-style: preserve-3d; 
+            transition: transform 0.3s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+        .phone-screen { 
+            width: 100%; 
+            height: 100%; 
+            border-radius: 32px; 
+            overflow: hidden; 
+            position: relative; 
+            background: #000; /* Fundo preto no restante da tela */
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        .phone-notch { 
+            position: absolute; 
+            top: 12px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 140px; 
+            height: 28px; 
+            background: #1a1a1a; 
+            border-radius: 14px; 
+            z-index: 10; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5); 
+        }
+        .phone-camera { 
+            position: absolute; 
+            top: 8px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 8px; 
+            height: 8px; 
+            background: #333; 
+            border-radius: 50%; 
+            z-index: 11; 
+        }
+        .phone-speaker { 
+            position: absolute; 
+            top: 18px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 50px; 
+            height: 4px; 
+            background: #333; 
+            border-radius: 2px; 
+            z-index: 11; 
+        }
+        .instagram-content { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%); 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 20px; 
+            color: white; 
+        }
+        .instagram-header { 
+            position: absolute; 
+            top: 50px; 
+            left: 0; 
+            right: 0; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 0 20px; 
+            z-index: 5; 
+        }
+        .profile-pic { 
+            width: 35px; 
+            height: 35px; 
+            border-radius: 50%; 
+            background: linear-gradient(135deg, #dc2626 0%, #f87171 100%); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: white; 
+            font-weight: bold; 
+            font-size: 14px; 
+        }
+        .username { 
+            font-weight: 600; 
+            font-size: 14px; 
+            margin-left: 10px; 
+        }
+        .post-content { 
+            text-align: center; 
+            margin-top: 80px; 
+        }
+        .post-title { 
+            font-size: 24px; 
+            font-weight: 800; 
+            color: #dc2626; 
+            margin-bottom: 10px; 
+        }
+        .post-subtitle { 
+            font-size: 36px; 
+            font-weight: 900; 
+            color: white; 
+            margin-bottom: 20px; 
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8); 
+        }
+        .post-description { 
+            font-size: 16px; 
+            color: #f3f4f6; 
+            font-weight: 600; 
+            margin-bottom: 30px; 
+        }
+        .cta-button { 
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); 
+            color: white; 
+            padding: 12px 24px; 
+            border-radius: 25px; 
+            font-weight: 600; 
+            text-decoration: none; 
+            display: inline-block; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3); 
+        }
+        .cta-button:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4); 
+            color: white; 
+        }
+        .instagram-actions { 
+            position: absolute; 
+            bottom: 20px; 
+            left: 20px; 
+            right: 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            z-index: 5; 
+        }
+        .action-icons { 
+            display: flex; 
+            gap: 20px; 
+        }
+        .action-icon { 
+            color: white; 
+            font-size: 20px; 
+            cursor: pointer; 
+            transition: color 0.3s ease, transform 0.3s ease; 
+        }
+        .action-icon:hover { 
+            color: #dc2626; 
+            transform: scale(1.2); 
+        }
+        .post-content-square { 
+            width: 100%; 
+            height: 0; 
+            padding-top: 100%; /* 1:1 aspect ratio (square) */
+            position: relative; 
+            overflow: hidden; 
+            background: #000; /* Fundo preto dentro do quadrado */
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        .post-image { 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            max-width: 100%; 
+            max-height: 100%; 
+            object-fit: contain; /* Mantém proporções sem esticar */
+        }
+        @keyframes float { 
+            0%, 100% { transform: translateY(0px) rotateY(-5deg); } 
+            50% { transform: translateY(-15px) rotateY(5deg); } 
+        }
+        .section-title { 
+            font-size: 3rem; 
+            font-weight: 900; 
+            text-align: center; 
+            margin-bottom: 4rem; 
+            color: white; 
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5); 
+            animation: fadeInUp 1s ease-out; 
+        }
+        .content-card { 
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(10px); 
+            border-radius: 20px; 
+            padding: 30px; 
+            margin-bottom: 30px; 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .content-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.2); 
+        }
+        .platform-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            margin-top: 30px; 
+        }
+        .platform-card { 
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(10px); 
+            border-radius: 15px; 
+            padding: 25px; 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            transition: transform 0.3s ease, opacity 0.3s ease; 
+        }
+        .platform-card:hover { 
+            transform: translateY(-3px); 
+        }
+        .platform-icon { 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            background: linear-gradient(135deg, #dc2626 0%, #f87171 100%); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: white; 
+            font-size: 24px; 
+            margin-bottom: 15px; 
+            transition: transform 0.3s ease; 
+        }
+        .platform-card:hover .platform-icon { 
+            transform: rotate(360deg); 
+        }
+        .mockup-container { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 30px; 
+            flex-wrap: wrap; 
+            position: relative; 
+        }
+        .video-mockup { 
+            position: relative; 
+            width: 280px; 
+            height: 580px; 
+            background: linear-gradient(145deg, #2d2d2d, #1a1a1a); 
+            border-radius: 40px; 
+            padding: 8px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6); 
+            animation: float 6s ease-in-out infinite 2s; 
+        }
+        .video-screen { 
+            width: 100%; 
+            height: 100%; 
+            border-radius: 32px; 
+            overflow: hidden; 
+            position: relative; 
+            background: #000; 
+        }
+        .video-content { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+        .hero-section { 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            position: relative; 
+            overflow: hidden; 
+        }
+        .hero-bg { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: radial-gradient(circle at 20% 20%, rgba(220, 38, 38, 0.2) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(153, 27, 27, 0.2) 0%, transparent 50%); 
+            pointer-events: none; 
+        }
+        .mistake-highlight { 
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); 
+            padding: 4px 12px; 
+            border-radius: 20px; 
+            color: white; 
+            font-weight: 700; 
+            display: inline-block; 
+            margin: 10px 0; 
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3); 
+            animation: pulse 2s infinite; 
+        }
+        .summary-box { 
+            background: rgba(220, 38, 38, 0.1); 
+            border-left: 4px solid #dc2626; 
+            padding: 25px; 
+            border-radius: 10px; 
+            margin: 20px 0; 
+        }
+        .counter-animation { 
+            font-size: 4rem; 
+            font-weight: 900; 
+            color: #dc2626; 
+            text-shadow: 0 2px 10px rgba(220, 38, 38, 0.5); 
+        }
+        .carousel-container { 
+            position: relative; 
+            width: 280px; 
+            height: 580px; 
+            overflow: hidden; 
+        }
+        .carousel { 
+            display: flex; 
+            flex-direction: column; 
+            height: 100%; 
+            transition: transform 0.5s ease; 
+        }
+        .carousel-arrow { 
+            position: absolute; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            background: rgba(0,0,0,0.5); 
+            color: white; 
+            padding: 10px; 
+            cursor: pointer; 
+            z-index: 10; 
+            border-radius: 50%; 
+            transition: background 0.3s ease; 
+        }
+        .carousel-arrow:hover { 
+            background: #dc2626; 
+        }
+        .carousel-arrow.left { left: 10px; }
+        .carousel-arrow.right { right: 10px; }
+        .mockup-label { 
+            text-align: center; 
+            margin-top: 10px; 
+            color: white; 
+            font-weight: 600; 
+            font-size: 1rem; 
+        }
+        .post-keywords { 
+            text-align: center; 
+            color: #f3f4f6; 
+            font-size: 12px; 
+            margin-top: 10px; 
+            line-height: 1.2; 
+            max-width: 280px; 
+            word-wrap: break-word; 
+        }
+        @keyframes fadeInUp { 
+            from { opacity: 0; transform: translateY(20px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        @keyframes pulse { 
+            0% { transform: scale(1); } 
+            50% { transform: scale(1.05); } 
+            100% { transform: scale(1); } 
+        }
+        @media (max-width: 768px) { 
+            .section-title { font-size: 2rem; } 
+            .phone-mockup, .carousel-container, .video-mockup { width: 200px; height: 400px; } 
+            .post-subtitle { font-size: 24px; } 
+            .mockup-container { flex-direction: column; gap: 20px; } 
+            .platform-grid { grid-template-columns: 1fr; } 
+            .post-keywords { max-width: 200px; font-size: 10px; }
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="container mx-auto px-6 flex items-center justify-between flex-col lg:flex-row">
+            <div class="w-full lg:w-1/2 mb-8 lg:mb-0 text-center lg:text-left">
+                <h1 class="text-5xl lg:text-7xl font-black mb-6"> The <span class="gradient-text">50K</span> Content Idea <br>For Trey </h1>
+                <p class="text-xl lg:text-2xl text-gray-300 mb-8 leading-relaxed">  work for Trey and RGP, creating 3 original viral pieces of content and responding to all incoming questions. </p>
+                <div class="mistake-highlight"> <i class="fas fa-exclamation-triangle mr-2"></i> See the viral contents </div>
+                <div class="mt-4 text-2xl font-bold text-white">↓</div>
+                <div class="mt-8"> <a href="#resumo" class="cta-button text-lg"> <i class="fas fa-arrow-down mr-2"></i> Discover Now </a> </div>
+            </div>
+            <div class="w-full lg:w-1/2 flex justify-center">
+                <div class="phone-mockup" id="hero-mockup">
+                    <div class="phone-notch"> <div class="phone-camera"></div> <div class="phone-speaker"></div> </div>
+                    <div class="phone-screen">
+                        <div class="instagram-content">
+                            <div class="instagram-header">
+                                <div class="flex items-center">
+                                    <div class="profile-pic">TS</div>
+                                    <div class="username">@treysheneman</div>
+                                </div>
+                                <div class="text-white"> <i class="fas fa-ellipsis-v"></i> </div>
+                            </div>
+                            <div class="post-content">
+                                <div class="post-title">THE</div>
+                                <div class="post-subtitle">50K MISTAKE</div>
+                                <div class="post-description">YOU’RE MAKING!</div>
+                                <div class="text-sm text-gray-400 mt-4"> See → </div>
+                            </div>
+                            <div class="instagram-actions">
+                                <div class="action-icons">
+                                    <i class="action-icon fas fa-heart"></i>
+                                    <i class="action-icon fas fa-comment"></i>
+                                    <i class="action-icon fas fa-share"></i>
+                                </div>
+                                <i class="action-icon fas fa-bookmark"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Episode Summary -->
+    <section id="resumo" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Episode Summary</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="content-card">
+                    <div class="summary-box">
+                        <h3 class="text-2xl font-bold mb-4 text-white"> <i class="fas fa-lightbulb mr-2 text-yellow-400"></i> Core Theme </h3>
+                        <p class="text-lg text-gray-300 leading-relaxed"> Most businesses fail at growth marketing not due to poor execution, but because of flawed personnel strategy. They expect one person or agency to handle all marketing aspects, leading to inefficiency and burnout. </p>
+                    </div>
+                    <div class="mt-6 p-6 bg-gray-900 rounded-lg">
+                        <h4 class="text-xl font-semibold mb-3 text-white"> <i class="fas fa-key mr-2 text-red-400"></i> Key to Success </h4>
+                        <p class="text-gray-300 leading-relaxed"> The episode teaches that real growth happens when businesses separate brand-building (<strong class="text-red-400">"magnet"</strong>) and conversion-driving (<strong class="text-red-400">"engine"</strong>) roles, creating true momentum. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Content Distribution Plan -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Content Distribution Plan</h2>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-icon"> <i class="fab fa-instagram"></i> </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Instagram</h3>
+                    <div class="space-y-3 text-gray-300">
+                        <div class="flex items-start"> <i class="fas fa-video mr-3 text-red-400 mt-1"></i> <div> <strong>5 weekly posts:</strong> 4 Reels (2 trend/viral, 2 value) + 1 static post </div> </div>
+                        <div class="flex items-start"> <i class="fas fa-eye mr-3 text-red-400 mt-1"></i> <div> <strong>6 weekly Stories:</strong> 2 for delivering value by answering questions + 4 for engagement </div> </div>
+                        <div class="flex items-start"> <i class="fas fa-users mr-3 text-red-400 mt-1"></i> <div> Focus on building genuine community with authentic connection </div> </div>
+                    </div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon"> <i class="fab fa-tiktok"></i> </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">TikTok</h3>
+                    <div class="space-y-3 text-gray-300">
+                        <div class="flex items-start"> <i class="fas fa-sync mr-3 text-red-400 mt-1"></i> <div> <strong>Repurposing:</strong> Instagram content adapted for TikTok </div> </div>
+                        <div class="flex items-start"> <i class="fas fa-heart mr-3 text-red-400 mt-1"></i> <div> <strong>Direct connection:</strong> All interaction through videos (Stories are rare) </div> </div>
+                        <div class="flex items-start"> <i class="fas fa-trending-up mr-3 text-red-400 mt-1"></i> <div> Focus on viral content and platform trends </div> </div>
+                    </div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon"> <i class="fab fa-linkedin"></i> </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">LinkedIn</h3>
+                    <div class="space-y-3 text-gray-300">
+                        <div class="flex items-start"> <i class="fas fa-briefcase mr-3 text-red-400 mt-1"></i> <div> <strong>100% B2B value:</strong> Professional content with sophisticated language </div> </div>
+                        <div class="flex items-start"> <i class="fas fa-edit mr-3 text-red-400 mt-1"></i> <div> <strong>4 weekly posts:</strong> Focus on written posts + 1 professional video </div> </div>
+                        <div class="flex items-start"> <i class="fas fa-target mr-3 text-red-400 mt-1"></i> <div> Differentiated avatar for corporate audience </div> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- When and Where to Post -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">When and Where to Post?</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="content-card">
+                        <div class="text-center mb-6">
+                            <div class="inline-block p-4 bg-red-600 rounded-full mb-4"> <i class="fas fa-building text-3xl text-white"></i> </div>
+                            <h3 class="text-2xl font-bold text-white">B2B Offers</h3>
+                        </div>
+                        <div class="space-y-4 text-gray-300">
+                            <div class="flex items-start"> <i class="fas fa-arrow-right mr-3 text-red-400 mt-1"></i> <div>Services, agencies, hands-on consulting</div> </div>
+                            <div class="flex items-start"> <i class="fas fa-arrow-right mr-3 text-red-400 mt-1"></i> <div>Focus: <strong>LinkedIn + Instagram</strong></div> </div>
+                            <div class="flex items-start"> <i class="fas fa-arrow-right mr-3 text-red-400 mt-1"></i> <div>Instagram more for brand positioning</div> </div>
+                            <div class="flex items-start"> <i class="fas fa-arrow-right mr-3 text-red-400 mt-1"></i> <div>One-on-one conversation strategy</div> </div>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <div class="text-center mb-6">
+                            <div class="inline-block p-4 bg-red-600 rounded-full mb-4"> <i class="fas fa-shopping-cart text-3xl text-white"></i> </div>
+                            <h3 class="text-2xl font-bold text-white">B2C Offers</h3>
+                        </div>
+                        <div class="space-y-4 text-gray-300">
+                            <div class="flex items-start"> <i class="fas fa-arrow-right mr-3 text-red-400 mt-1"></i> <div>Products, SaaS, tools, courses</div> </div>
+                            <div class="flex items-start"> <i class="fas fa-arrow-right mr-3 text-red-400 mt-1"></i> <div>Focus: <strong>Instagram + TikTok</strong></div> </div>
+                            <div class="flex items-start"> <i class="fas fa-arrow-right mr-3 text-red-400 mt-1"></i> <div>Strong persona building</div> </div>
+                            <div class="flex items-start"> <i class="fas fa-arrow-right mr-3 text-red-400 mt-1"></i> <div>Lead magnets + scaled sales</div> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Mobile Mockups -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Content Examples</h2>
+            <div class="mockup-container">
+                <div class="carousel-container">
+                    <div class="carousel" id="post-carousel">
+                        <div class="video-mockup">
+                            <div class="phone-notch"> <div class="phone-camera"></div> <div class="phone-speaker"></div> </div>
+                            <div class="phone-screen">
+                                <div class="post-content-square" id="post-screen">
+                                    <img src="post Instagram 1 - part1.jpeg" alt="Instagram Post Part 1" class="post-image">
+                                    <img src="post Instagram 1 - part2.png" alt="Instagram Post Part 3" class="post-image hidden">
+                                    <img src="post Instagram 1 - part3.png" alt="Instagram Post Part 3" class="post-image hidden">
+                                    <img src="post Instagram 1 - part4.png" alt="Instagram Post Part 4" class="post-image hidden">
+                                    <img src="post Instagram 1 - part5.png" alt="Instagram Post Part 5" class="post-image hidden">
+                                    <img src="post Instagram 2 - part1.png" alt="Instagram Post Part 5" class="post-image hidden">
+                                    <img src="post Instagram 2 - part2.png" alt="Instagram Post Part 5" class="post-image hidden">
+                                    <img src="post Instagram 2 - part3.png" alt="Instagram Post Part 5" class="post-image hidden">
+                                    <img src="post Instagram 2 - part4.png" alt="Instagram Post Part 5" class="post-image hidden">
+                                    <img src="post Instagram 2 - part5.png" alt="Instagram Post Part 5" class="post-image hidden">
+                                    <img src="post Instagram 2 - part6.png" alt="Instagram Post Part 5" class="post-image hidden">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-arrow left" onclick="movePostImage(-1)"> <i class="fas fa-chevron-left"></i> </div>
+                    <div class="carousel-arrow right" onclick="movePostImage(1)"> <i class="fas fa-chevron-right"></i> </div>
+                    <div class="mockup-label">Instagram Post</div>
+                    <div class="post-keywords">
+                        tracking accountability vibes magnet engine attention results marketing momentum collaboration synergy pull attract convert success strategy cooperation effort teamwork drive focus energy motion harmony balance unity partnership coordination
+                    </div>
+                </div>
+                <div class="video-mockup">
+                    <div class="phone-notch"> <div class="phone-camera"></div> <div class="phone-speaker"></div> </div>
+                    <div class="video-screen">
+                        <iframe src="https://www.youtube.com/embed/qg5GBfwgA6A" title="Marketing Strategy Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+                    </div> 
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <a href="#" class="cta-button text-lg"> <i class="fas fa-video mr-2"></i> See Full Assessment and Videos </a>
+            </div>
+        </div>
+    </section>
+    <!-- Final CTA -->
+    <section class="py-20 gradient-bg">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl lg:text-5xl font-black text-white mb-6"> 10x Your Results </h2>
+            <p class="text-xl text-white opacity-90 mb-8 max-w-2xl mx-auto"> Click on the <strong>Button</strong> bellow and receive all the exclusive content to help you 10x your results! See the full assessment and videos bellow. </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="#" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-red-600 transition-colors text-lg"> <i class="fas fa-video mr-2"></i> See Full Assessment and Videos </a>
+            </div>
+            <div class="mt-12 text-white opacity-75">
+                <p class="text-lg"> <i class="fas fa-user-circle mr-2"></i> Trey Sheneman </p>
+            </div>
+        </div>
+    </section>
+    <script>
+        // Smooth scroll animation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Counter animation
+        function animateCounter(element, target, duration = 2000) {
+            let current = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Observe elements for animation
+        document.querySelectorAll('.content-card, .platform-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Hero mockup 3D mouse follow
+        const heroMockup = document.getElementById('hero-mockup');
+        const heroSection = document.querySelector('.hero-section');
+
+        heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroMockup.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const moveX = (e.clientX - centerX) * 0.05;
+            const moveY = (e.clientY - centerY) * 0.05;
+            heroMockup.style.transform = `perspective(1000px) translate3d(${moveX}px, ${moveY}px, 50px) rotateX(${-moveY}deg) rotateY(${moveX}deg)`;
+        });
+
+        heroSection.addEventListener('mouseleave', () => {
+            heroMockup.style.transition = 'transform 0.5s ease';
+            heroMockup.style.transform = 'perspective(1000px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg)';
+            setTimeout(() => {
+                heroMockup.style.transition = 'transform 0.3s ease';
+            }, 500);
+        });
+
+        // Post image carousel functionality
+        let currentPostIndex = 0;
+        const postScreen = document.getElementById('post-screen');
+        const postImages = postScreen.querySelectorAll('.post-image');
+        const totalPostImages = postImages.length;
+
+        function movePostImage(direction) {
+            postImages[currentPostIndex].classList.add('hidden');
+            currentPostIndex = (currentPostIndex + direction + totalPostImages) % totalPostImages;
+            postImages[currentPostIndex].classList.remove('hidden');
+        }
+
+        // Particle effect
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '2px';
+            particle.style.height = '2px';
+            particle.style.backgroundColor = 'rgba(220, 38, 38, 0.3)';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = '100vh';
+            particle.style.zIndex = '1';
+            document.body.appendChild(particle);
+            particle.animate([
+                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                { transform: 'translateY(-100vh) rotate(360deg)', opacity: 0 }
+            ], {
+                duration: Math.random() * 3000 + 2000,
+                easing: 'linear'
+            }).onfinish = () => {
+                particle.remove();
+            };
+        }
+
+        setInterval(createParticle, 500);
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero-bg');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
